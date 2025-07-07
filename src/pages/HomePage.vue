@@ -31,14 +31,14 @@ async function getPosts() {
 </script>
 
 <template>
-  <section class="container">
+  <section class="container bs-theme-dark">
     <div class="row">
       <div class="col-12 mb-3">
         <div class="d-flex justify-content-center align-items-center gap-3">
           <h1>Welcome to CodeWorksPosts!</h1>
           <!-- TODO FIND OUT WHERE THE DARK/LIGHT MODE TEXT CHANGER IS AT AND APPLY IT TO THIS BUTTON -->
-          <button v-if="account" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#postFormModal">Create New Post <span
-              class="mdi mdi-pencil-plus-outline"></span></button>
+          <button v-if="account" type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+            data-bs-target="#postFormModal">Create New Post <span class="mdi mdi-pencil-plus-outline"></span></button>
           <small v-else>Login to write new Posts!</small>
           <PageNav />
         </div>
@@ -52,7 +52,7 @@ async function getPosts() {
       </div>
     </div>
   </section>
-<PostModal />
+  <PostModal />
 </template>
 
 <style scoped lang="scss"></style>

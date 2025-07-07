@@ -1,4 +1,6 @@
 import { reactive } from 'vue'
+import { Profile } from './models/Profile.js'
+
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -11,7 +13,7 @@ export const AppState = reactive({
   currentPage: 1,
   totalPages: 0,
   searchTerm: '',
-  /** @type {import('./models/Profile.js').Profile} Posts from the database*/
+  /** @type {Profile} */
   profile: null,
 
 })

@@ -11,7 +11,7 @@ const props = defineProps({
   postProp: { type: Posts, required: true }
 })
 
-const account =  computed(() => AppState.account)
+const account = computed(() => AppState.account)
 
 async function deletePost() {
   const confirmed = await Pop.confirm('Are you sure you want to delete this Post?')
@@ -24,8 +24,8 @@ async function deletePost() {
     await postService.deletePost(props.postProp.id)
   }
   catch (error) {
-  Pop.error(error);
-  logger.error('COULD NOT DELETE POST', error)
+    Pop.error(error);
+    logger.error('COULD NOT DELETE POST', error)
   }
 }
 
@@ -47,7 +47,7 @@ async function deletePost() {
       <div>
         <span>{{ postProp.creator.name }}</span>
         <img :src="postProp.creator.picture" :alt="postProp.creator.name" class="creator-img">
-         <button @click="deletePost()" v-if="account?.id == postProp.creator.id" class="btn btn-outline-danger"
+        <button @click="deletePost()" v-if="account?.id == postProp.creator.id" class="btn btn-outline-danger"
           title="Delete car" type="button">
           <span class="mdi mdi-delete"></span>
         </button>

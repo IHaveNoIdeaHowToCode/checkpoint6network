@@ -34,7 +34,10 @@ class PostsService {
   async deletePost(postId) {
     const response = await api.delete(`api/posts/${postId}`)
     logger.log('DELETE POST', response.data)
-    // TODO splice the post you just deleted out of the appstate (gregslist)
+    // REVIEW splice the post you just deleted out of the appstate (gregslist)
+    const posts = AppState.posts
+    const postIndex = posts.findIndex(post => post.id == postId)
+    posts.splice(postIndex, 1)
   }
 
   async changePostPage(pageNumber) {

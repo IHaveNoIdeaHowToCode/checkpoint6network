@@ -36,9 +36,9 @@ const editablePostData = ref({
         placeholder="Type your Post here..." required maxlength="500">
     </div>
     <div class="form-floating-mb-3">
-      <!-- FIXME this should not be required -->
-      <input v-model="editablePostData.imgUrl" type="url" class="form-control" id="post-img" placeholder="Post Image..."
-        required maxlength="500">
+      <!-- REVIEW this should not be required -->
+      <input v-model="editablePostData.imgUrl" type="url" class="form-control" id="post-img"
+        placeholder="Post Image...">
     </div>
     <div class="d-flex justify-content-end gap-3">
       <button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal" aria-label="Close">Close</button>
