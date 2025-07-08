@@ -3,6 +3,7 @@ import { AppState } from '@/AppState.js';
 import PageNav from '@/components/PageNav.vue';
 import PostCard from '@/components/PostCard.vue';
 import PostModal from '@/components/PostModal.vue';
+import SearchBar from '@/components/SearchBar.vue';
 // import { Posts } from '@/models/Posts.js';
 import { postService } from '@/services/PostsService.js';
 import { logger } from '@/utils/Logger.js';
@@ -39,6 +40,7 @@ async function getPosts() {
           <button v-if="account" type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
             data-bs-target="#postFormModal">Create New Post <span class="mdi mdi-pencil-plus-outline"></span></button>
           <small v-else>Login to write new Posts!</small>
+          <SearchBar />
           <PageNav />
         </div>
       </div>

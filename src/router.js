@@ -16,14 +16,14 @@ const routes = [
     name: 'About',
     component: loadPage('AboutPage')
   },
-  // TODO reference art terminal for account edit stuff
+  // REVIEW reference art terminal for account edit stuff
   {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
   },
-  // TODO reference art terminal for profile stuff
+  // REVIEW reference art terminal for profile stuff
   {
     path: '/profile/:profileId',
     name: 'Profile Page',

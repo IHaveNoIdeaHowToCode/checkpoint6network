@@ -18,7 +18,7 @@ async function changePage(pageNumber) {
       await postService.changePostPage(pageNumber)
     }
     else {
-    // 
+    await postService.changeSearchPage(searchTerm, pageNumber)
     }
   } catch (error) {
     logger.error('COULD NOT CHANGE PAGE', error)
@@ -31,7 +31,7 @@ async function changePage(pageNumber) {
 
 
 
-<!-- FIXME FIX PAGE NAV, STUCK ON 0 of 0 PAGES -->
+<!-- REVIEW FIX PAGE NAV, STUCK ON 0 of 0 PAGES -->
 <template>
 <div class="di-flex-align-items-center-gap-3">
   <button @click="changePage(currentPage -1)" class="btn btn-primary" type="button" :disabled="currentPage ==1">

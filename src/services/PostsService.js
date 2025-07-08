@@ -29,7 +29,6 @@ class PostsService {
     const post = new Posts(response.data)
     // REVIEW unshift instead of pushing
     AppState.posts.unshift(post)
-
   }
 
   async deletePost(postId) {
@@ -41,10 +40,23 @@ class PostsService {
     posts.splice(postIndex, 1)
   }
 
+  async searchPosts(searchTerm) {
+    const response = await api.get(`api/posts?${searchTerm}`)
+    logger.log('SEARCHED POSTS', response.data)
+    AppState.searchTerm = searchTerm
+    this.handlePostResponse(response)
+  }
+
   async changePostPage(pageNumber) {
     const response = await api.get(`api/posts?page=${pageNumber}`)
     logger.log('CHANGE PAGE', response.data)
     // REVIEW save posts AND page information to appstate (vueflix)
+    this.handlePostResponse(response)
+  }
+
+  async changeSearchPage(searchTerm, pageNumber) {
+    const response = await api.get(`api/posts?page=${pageNumber}&query=${searchTerm}`)
+    logger.log('CHANGED PAGE', response.data)
     this.handlePostResponse(response)
   }
 
