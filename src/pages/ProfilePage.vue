@@ -1,4 +1,4 @@
-<!-- TODO BUILD PAGE -->
+<!-- REVIEW BUILD PAGE -->
 
 
 <script setup>
@@ -19,7 +19,7 @@ const route = useRoute()
 
 onMounted(() => {
   getProfileById()
-  getProfileProjectsByProfileId()
+  getProfilePostsByProfileId()
 })
 
 async function getProfileById() {
@@ -33,7 +33,7 @@ async function getProfileById() {
   }
 }
 
-async function getProfileProjectsByProfileId() {
+async function getProfilePostsByProfileId() {
   try {
     const profileIdFromRouteParams = route.params.profileId
     await postService.getPostsByProfileId(profileIdFromRouteParams)
@@ -59,7 +59,7 @@ async function getProfileProjectsByProfileId() {
     </section>
    
     <section class="mx-2 mx-md-5 post-cards">
-      <ProjectCard v-for="post in profilePosts" :post :key="`profile-post-${post.id}`" />
+      <PostCard :post-prop="post" v-for="post in profilePosts" :post :key="`profile-post-${post.id}`" />
     </section>
   </div>
 </template>
