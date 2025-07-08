@@ -46,7 +46,9 @@ async function deletePost() {
       </div>
       <div>
         <span>{{ postProp.creator.name }}</span>
-        <img :src="postProp.creator.picture" :alt="postProp.creator.name" class="creator-img">
+        <RouterLink :to="{ name: 'Profile Page', params: { profileId: postProp.creator.id } }">
+        <img :src="postProp.creator.picture" :alt="postProp.creator.name" 
+        class="creator-img"> </RouterLink>
         <button @click="deletePost()" v-if="account?.id == postProp.creator.id" class="btn btn-outline-danger"
           title="Delete car" type="button">
           <span class="mdi mdi-delete"></span>

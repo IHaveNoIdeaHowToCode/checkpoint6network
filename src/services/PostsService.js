@@ -14,7 +14,8 @@ class PostsService {
       logger.log('GOT DEM POSTS BOIIIIII', response.data)
       const posts = response.data.posts.map(pojo => new Posts(pojo))
       AppState.posts = posts
-      // TODO save page information from response data to your appstate
+      // REVIEW save page information from response data to your appstate
+      this.handlePostResponse(response)
     }
     catch (error) {
       Pop.error(error);
@@ -26,8 +27,8 @@ class PostsService {
     const response = await api.post('api/posts', postData)
     logger.log('CREATED POST', response.data)
     const post = new Posts(response.data)
-    // FIXME unshift instead of pushing
-    AppState.posts.push(post)
+    // REVIEW unshift instead of pushing
+    AppState.posts.unshift(post)
 
   }
 
@@ -43,7 +44,23 @@ class PostsService {
   async changePostPage(pageNumber) {
     const response = await api.get(`api/posts?page=${pageNumber}`)
     logger.log('CHANGE PAGE', response.data)
-    // TODO save posts AND page information to appstate (vueflix)
+    // REVIEW save posts AND page information to appstate (vueflix)
+    this.handlePostResponse(response)
+  }
+
+  async getPostsByProfileId(profileId) {
+    AppState.posts = []
+    const response = await api.get(`api/posts?creatorId=${profileId}`)
+    logger.log('GOT THIS GUYS POST', response.data)
+    const profilePosts = response.data.posts.map(pojo => new Posts(pojo))
+    AppState.posts = profilePosts
+  }
+
+  handlePostResponse(response) {
+    const posts = response.data.posts.map(pojo => new Posts(pojo))
+    AppState.posts = posts
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
   }
 }
 
